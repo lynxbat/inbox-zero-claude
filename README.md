@@ -165,6 +165,47 @@ In Claude Code, navigate to this project and run:
 - You decide: respond, file, archive, delete, defer, delegate
 - Claude executes and updates logs
 
+### Building Rules During Triage
+
+As Claude presents emails, you can teach it your preferences by asking it to create rules. Here are examples:
+
+**Sender & Domain Rules**
+```
+"Always file emails from @stripe.com to Payments/Stripe"
+"Add sarah@vendor.com as a VIP"
+"Emails from this domain should go to Engineering"
+```
+
+**Keyword Rules**
+```
+"Auto-archive anything with 'newsletter' in the subject"
+"Flag emails mentioning 'deadline' or 'urgent' as high priority"
+"Weekly digest emails should auto-file to Analytics"
+```
+
+**Pattern Rules**
+```
+"This sender always sends reports - file to Analytics/Reports"
+"Meeting invites from this person are always 1:1s - file to People/John"
+"Anything from *@noreply.* should be low priority"
+```
+
+**Context & People**
+```
+"Create a log for this person - they're my main contact at Acme"
+"Start tracking this topic - it's a Q1 initiative"
+"Add this company as a vendor under Payments"
+```
+
+**Adjusting Urgency**
+```
+"This type of email is never urgent - add to auto-archive"
+"Emails from this sender should always be 🔴"
+"Downgrade notifications from this service to ⚪"
+```
+
+Claude will update the appropriate config file (`folder-sorting-rules.md`, `urgency-rules.md`, etc.) and apply the rule going forward.
+
 ### Context System
 
 The `logs/` folder stores your personalized context:
