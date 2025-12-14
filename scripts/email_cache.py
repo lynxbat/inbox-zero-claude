@@ -18,7 +18,7 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-DB_PATH = Path(__file__).parent / "email_cache.db"
+DB_PATH = Path(__file__).parent.parent / "email_cache.db"
 
 
 def init_db():

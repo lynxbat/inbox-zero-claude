@@ -1,6 +1,8 @@
 # Private data (user-specific configs, logs, context)
-logs/
-attachments/
+logs/*
+!logs/.gitkeep
+attachments/*
+!attachments/.gitkeep
 
 # Database and cache files
 *.db
