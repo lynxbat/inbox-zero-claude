@@ -4,7 +4,7 @@ Email organization and triage workflow powered by Claude Code.
 
 ## Prerequisites
 
-- [outlook-mcp](https://github.com/syedazharmbnr1/claude-outlook-mcp) configured in Claude Code
+- [outlook-mcp](https://github.com/lynxbat/claude-outlook-mcp) configured in Claude Code
 - Microsoft Outlook for macOS
 
 ## Quick Start

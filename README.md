@@ -20,7 +20,9 @@ Achieve inbox zero with Claude Code. An intelligent email workflow that learns y
 
 ### Outlook for macOS (via outlook-mcp)
 
-Currently, inbox-zero-claude works with **Microsoft Outlook for macOS** through the [outlook-mcp](https://github.com/syedazharmbnr1/claude-outlook-mcp) server.
+Currently, inbox-zero-claude works with **Microsoft Outlook for macOS** through the [outlook-mcp](https://github.com/lynxbat/claude-outlook-mcp) server.
+
+> **Note:** This links to a fork with enhanced features. Once [PR #5](https://github.com/syedazharmbnr1/claude-outlook-mcp/pull/5) is merged, the upstream repo will be recommended.
 
 #### What outlook-mcp provides
 
@@ -43,7 +45,7 @@ Currently, inbox-zero-claude works with **Microsoft Outlook for macOS** through 
 
 2. **Clone outlook-mcp**:
    ```bash
-   git clone https://github.com/syedazharmbnr1/claude-outlook-mcp.git
+   git clone https://github.com/lynxbat/claude-outlook-mcp.git
    cd claude-outlook-mcp
    bun install
    ```
