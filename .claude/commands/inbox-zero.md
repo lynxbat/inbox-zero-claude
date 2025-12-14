@@ -6,9 +6,66 @@ description: Weekly email triage workflow for inbox zero
 
 You are helping me achieve inbox zero through a two-pass triage workflow.
 
-## Setup Phase
+## First Run Detection
 
-Before starting, load context:
+Before anything else, check if this is a first-time setup:
+
+1. Check if `logs/config/folder-sorting-rules.md` exists
+2. If **missing or empty** → Enter **Setup Mode** (see below)
+3. If **exists** → Continue to normal triage workflow
+
+---
+
+## Setup Mode (First Run Only)
+
+If logs/config doesn't exist, guide the user through initial setup:
+
+### Step 1: Create Directory Structure
+
+```bash
+cp -r templates/config logs/config
+cp -r templates/people logs/people
+cp -r templates/topics logs/topics
+cp -r templates/companies logs/companies
+cp -r templates/programs logs/programs
+mkdir -p attachments
+```
+
+### Step 2: Verify Outlook MCP
+
+Test that outlook-mcp is configured:
+- Try fetching 1 email from inbox
+- If it fails, guide user to configure outlook-mcp
+
+### Step 3: Analyze Inbox (Optional)
+
+Ask: "Would you like me to analyze your recent emails to suggest personalized rules?"
+
+If yes:
+1. Fetch last 50-100 emails from inbox
+2. Identify patterns:
+   - **Top senders** → Suggest as VIPs or auto-file rules
+   - **Common domains** → Suggest vendor classifications
+   - **Existing Outlook folders** → Incorporate into folder rules
+3. Present findings and let user approve/modify
+4. Update `logs/config/` files with personalized rules
+
+If no:
+- User can edit templates manually later
+
+### Step 4: Confirm Ready
+
+Say: "Setup complete! Your config is in `logs/config/`. Run `/inbox-zero` again to start triaging."
+
+Exit setup mode.
+
+---
+
+## Normal Triage Mode
+
+### Context Loading Phase
+
+Before starting triage, load context:
 
 1. Read all files in `logs/config/` for urgency rules and send permissions
 2. Read all files in `logs/people/` for sender context
