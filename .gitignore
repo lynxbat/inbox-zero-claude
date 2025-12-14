@@ -1,0 +1,28 @@
+# Private data (user-specific configs, logs, context)
+logs/
+attachments/
+
+# Database and cache files
+*.db
+*.sqlite
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Environment and secrets
+.env
+.env.local
+*.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
