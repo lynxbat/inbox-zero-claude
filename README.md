@@ -14,8 +14,76 @@ Achieve inbox zero with Claude Code. An intelligent email workflow that learns y
 ## Prerequisites
 
 - [Claude Code](https://claude.ai/code) (CLI or IDE extension)
-- Microsoft Outlook for macOS
-- [outlook-mcp](https://github.com/syedazharmbnr1/claude-outlook-mcp) configured
+- A supported email provider (see below)
+
+## Supported Email Providers
+
+### Outlook for macOS (via outlook-mcp)
+
+Currently, inbox-zero-claude works with **Microsoft Outlook for macOS** through the [outlook-mcp](https://github.com/syedazharmbnr1/claude-outlook-mcp) server.
+
+#### What outlook-mcp provides
+
+| Capability | Description |
+|------------|-------------|
+| **Read emails** | Fetch inbox, search, filter by date |
+| **Send/Reply** | Compose and send emails (with HTML support) |
+| **Organize** | Move to folders, archive, delete |
+| **Folders** | Create, rename, list folders |
+| **Attachments** | Save attachments to disk |
+| **Calendar** | Read and create calendar events |
+| **Contacts** | Search contacts |
+
+#### Installation
+
+1. **Install Bun** (if not already installed):
+   ```bash
+   curl -fsSL https://bun.sh/install | bash
+   ```
+
+2. **Clone outlook-mcp**:
+   ```bash
+   git clone https://github.com/syedazharmbnr1/claude-outlook-mcp.git
+   cd claude-outlook-mcp
+   bun install
+   ```
+
+3. **Grant Outlook permissions**:
+   - Open Microsoft Outlook for macOS
+   - When prompted, allow automation/accessibility permissions
+   - outlook-mcp communicates with Outlook via AppleScript
+
+4. **Add to Claude Code config** (`~/.claude.json`):
+   ```json
+   {
+     "mcpServers": {
+       "outlook-mcp": {
+         "command": "bun",
+         "args": ["run", "/path/to/claude-outlook-mcp/index.ts"]
+       }
+     }
+   }
+   ```
+
+5. **Verify it works**:
+   ```bash
+   claude
+   # Then ask: "List my recent emails"
+   ```
+
+#### Troubleshooting
+
+| Issue | Solution |
+|-------|----------|
+| "Outlook not responding" | Ensure Outlook is open and not in a modal dialog |
+| Permission denied | Grant Terminal/Claude automation access in System Preferences → Privacy & Security |
+| MCP not found | Check the path in `~/.claude.json` is correct |
+
+### Other Providers (Future)
+
+Gmail, IMAP, and other providers are not yet supported but the architecture allows for future expansion. Contributions welcome!
+
+---
 
 ## Quick Start
 
@@ -45,20 +113,9 @@ Edit the files in `logs/config/`:
 - **`urgency-rules.md`** - Set VIP senders, urgent keywords, auto-archive rules
 - **`send-permissions.md`** - Control when Claude can send vs draft
 
-### 4. Configure Outlook MCP
+### 4. Install Email Provider
 
-Add outlook-mcp to your Claude Code config (`~/.claude.json` or Claude Desktop config):
-
-```json
-{
-  "mcpServers": {
-    "outlook-mcp": {
-      "command": "bun",
-      "args": ["run", "/path/to/outlook-mcp/index.ts"]
-    }
-  }
-}
-```
+Follow the [outlook-mcp installation](#installation) instructions above.
 
 ### 5. Run Inbox Zero
 
