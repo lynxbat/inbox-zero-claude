@@ -81,9 +81,32 @@ Currently, inbox-zero-claude works with **Microsoft Outlook for macOS** through 
 | Permission denied | Grant Terminal/Claude automation access in System Preferences → Privacy & Security |
 | MCP not found | Check the path in `~/.claude.json` is correct |
 
-### Other Providers (Future)
+### Compatibility Matrix
 
-Gmail, IMAP, and other providers are not yet supported but the architecture allows for future expansion. Contributions welcome!
+| Provider | Platform | MCP | Status |
+|----------|----------|-----|--------|
+| **Outlook (Legacy)** | macOS | [outlook-mcp](https://github.com/lynxbat/claude-outlook-mcp) | ✅ Supported |
+| **Outlook (New)** | macOS | — | ❌ Not supported (no AppleScript) |
+| **Outlook** | Windows | — | ❌ Not tested |
+| **Microsoft 365** | Web/API | — | 🔮 Wishlist |
+| **Gmail** | All | See wishlist | 🔮 Wishlist |
+| **IMAP/SMTP** | All | See wishlist | 🔮 Wishlist |
+| **Apple Mail** | macOS | — | 🔮 Wishlist |
+
+> **Note:** "Outlook (Legacy)" refers to the traditional Outlook for Mac app, not the newer web-based "New Outlook" which doesn't support AppleScript automation.
+
+### Email MCP Wishlist
+
+These MCPs exist in the ecosystem and could potentially be integrated:
+
+| MCP | Protocol | Notes |
+|-----|----------|-------|
+| [Gmail-MCP-Server](https://github.com/GongRzhe/Gmail-MCP-Server) | Gmail API | OAuth authentication, full Gmail integration |
+| [imap-mcp-server](https://github.com/nikolausm/imap-mcp-server) | IMAP/SMTP | Works with Gmail, Outlook.com, Yahoo, 15+ providers |
+| [imap-mcp](https://github.com/non-dirty/imap-mcp) | IMAP | Interactive email processing, learns preferences |
+| [Universal Email](https://www.pulsemcp.com/servers/timecyber-universal-email) | IMAP/POP3/SMTP | Auto-detects provider settings |
+
+**Want to add support?** The inbox-zero workflow is MCP-agnostic. If an email MCP provides read, send, and organize capabilities, it should work with minimal changes to the `/inbox-zero` command. PRs welcome!
 
 ---
 
